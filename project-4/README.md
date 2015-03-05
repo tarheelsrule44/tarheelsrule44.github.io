@@ -1,6 +1,6 @@
 ## Website Performance Optimization portfolio project
 
-To view the project live, head over to https://tarheelsrule44/tarheelsrule44.github.io/project-4/index.html
+To view the project live, head over to http://tarheelsrule44.github.io/project-4/index.html
 
 For optimization of views/js/main.js:
 
