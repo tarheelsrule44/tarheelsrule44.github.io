@@ -2,6 +2,8 @@
 
 To view the project live, head over to http://tarheelsrule44.github.io/project-4/index.html
 
+The link includes minfied versions of HTML, CSS, and JS files. 
+
 For optimization of views/js/main.js:
 
 Removed many variables from "for loops" that didn't need to be included.  
