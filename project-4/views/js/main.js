@@ -427,8 +427,6 @@ var resizePizzas = function(size) {
     var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldsize = oldwidth / windowwidth;
 
-    // TODO: change to 3 sizes? no more xl?
-    // Changes the slider value to a percent width
     function sizeSwitcher (size) {
       switch(size) {
         case "1":
@@ -449,11 +447,11 @@ var resizePizzas = function(size) {
 
   // moved Variables dx and newwidth outside of the for loop for speed
   function changePizzaSizes(size) { 
-      var pizzaContainers = document.getElementsByClassName(".randomPizzaContainer");   
-      var dx = determineDx(pizzaContainers[3], size);
-      var newwidth = (pizzaContainers[3].offsetWidth + dx) + 'px';
+      var pizzaContainers = document.getElementsByClassName(".randomPizzaContainer");       
       for (var i = 0; i < pizzaContainers.length; i++) {
-      pizzaContainers[i].style.width = newwidth;
+        var dx = determineDx(pizzaContainers[i], size);
+        var newwidth = (pizzaContainers[i].offsetWidth + dx) + 'px';
+        pizzaContainers[i].style.width = newwidth;
     }
   }
 
