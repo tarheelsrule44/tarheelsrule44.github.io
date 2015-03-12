@@ -1,3 +1,29 @@
+var randomSpeed = function() {
+    var ranSpeed = (Math.floor(Math.random() * 5) +1) * 100;
+    return ranSpeed;
+}
+var row = [60, 145, 230, 315];
+var randomRow = function() {
+    getRandomRow = row[Math.floor(Math.random() * row.length)];
+    return getRandomRow;
+}
+
+var column = [0, 100, 200, 300, 400, 500, 600];
+var randomColumn = function() {
+    getRandomColumn = column[Math.floor(Math.random() * column.length)];
+    return getRandomColumn;
+}
+
+var Rock = function(x, y) {
+    this.sprite = 'images/Rock.png';
+    this.x = x;
+    this.y = y;
+}
+
+Rock.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {    
     this.sprite = 'images/enemy-bug.png';
@@ -14,7 +40,9 @@ Enemy.prototype.update = function(dt) {
     }
     // If the enemy is off the screen, reset position
     else{
-        this.x = -75;
+        this.x = -75;     
+        this.speed = randomSpeed(); 
+        this.y = randomRow();
     }
 }
 
@@ -38,23 +66,23 @@ Player.prototype.update = function(dt){
     // Defines player's area
     playerPosition = {
         'left':   this.x,
-        'bottom': this.y,
+        'top': this.y,
         'right':  this.x+50,
-        'top':    this.y+70,
+        'bottom':    this.y+70,
     }
     // Iterate through allEnemies and define enemy area   
     for(e=0; e<allEnemies.length; e++){
         bugPosition = {
             'left':   allEnemies[e].x,
-            'bottom': allEnemies[e].y,
+            'top': allEnemies[e].y,
             'right':  allEnemies[e].x+70,
-            'top':    allEnemies[e].y+70,
+            'bottom':    allEnemies[e].y+70,
         }
         // Collision detection
     if(playerPosition.left<bugPosition.right &&
-        playerPosition.bottom<bugPosition.top &&
+        playerPosition.top<bugPosition.bottom &&
         playerPosition.right>bugPosition.left &&
-        playerPosition.top>bugPosition.bottom){
+        playerPosition.bottom>bugPosition.top){
         player.reset(); }
     }
          
@@ -62,7 +90,7 @@ Player.prototype.update = function(dt){
 
 // Reset player back to starting position.
 Player.prototype.reset = function(){
-    this.x = 200;
+    this.x = 300;
     this.y = 400;
 }
 
@@ -74,25 +102,31 @@ Player.prototype.render = function(){
 // What to do when arrow keys are used
 Player.prototype.handleInput = function(key) {
     if(key === 'left' && this.x > 25){
-        this.x = this.x - 100;
+        this.x -= 101;
     }
     if(key === 'up' && this.y > 0){
-        this.y = this.y - 82.5;
+        this.y -= 83;
     }
-    if(key === 'right' && this.x < 400){
-        this.x = this.x + 100;
+    if(key === 'right' && this.x < 600){
+        this.x += 101;
     }
     if(key === 'down' && this.y < 400){
-        this.y = this.y + 82.5;
+        this.y +=  83;
     }    
 }
 
-// Instantiation
-var allEnemies = [new Enemy(0, 60, 100),
-                  new Enemy(0, 145, 200),
-                  new Enemy(0, 230, 300)];
+var enemy1 = new Enemy(0, randomRow(), randomSpeed());
+var enemy2 = new Enemy(0, randomRow(), randomSpeed());
+var enemy3 = new Enemy(0, randomRow(), randomSpeed());
+var enemy4 = new Enemy(0, randomRow(), randomSpeed());
+var enemy5 = new Enemy(0, randomRow(), randomSpeed());
 
-var player = new Player(200, 400);
+// Instantiation
+var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+
+var player = new Player(300, 400);
+
+var rock = new Rock(randomColumn(), -25);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
