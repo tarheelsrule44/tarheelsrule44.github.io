@@ -2,24 +2,34 @@
 <html>
 <head>
 <title>Roulette Calculator</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head> 
 <body onload="getOriginalBet()">
+<div class="container">
+	<div class ="row">
+		<div class="col-md-6">
 
-<h1>Cash</h1>
-<form>
-Cash:
-<input type="number" name="startingCash" id="cash" value="2000"><br>
-Bet:
-<input type="number" name="minBet" id="bet" value="15" onChange="getOriginalBet()"><br>
-<input type="button" value="Spin!" onclick="onSpin()">
-<input type="button" value="Spin 100x" onclick="spinOneHundred()"
-</form>
+			<h1>Cash</h1>
+			<form>
+			Cash:
+			<input type="number" name="startingCash" id="cash" value="2000"><br>
+			Bet:
+			<input type="number" name="minBet" id="bet" value="15" onChange="getOriginalBet()"><br>
+			<input type="button" value="Spin!" onclick="onSpin()">
+			<input type="button" value="Spin 100x" onclick="spinOneHundred()"
+			</form>
+		</div>
+		<div class="col-md-6">
 
-<h1>Spin Info</h1>
-Number:
-<input type="number" id="number" readonly style="border-width:0px;border:none;"><br>
-Color:
-<input type="text" id="color" readonly style="border-width:0px;border:none;">
+			<h1>Spin Info</h1>
+			Number:
+			<input type="number" id="number" readonly style="border-width:0px;border:none;"><br>
+			Color:
+			<input type="text" id="color" readonly style="border-width:0px;border:none;">
+		</div>
+	</div>
+</div>
 
 <script>
 
@@ -98,7 +108,5 @@ function spinOneHundred(){
 
 
 </script>
-
-
 </body>
 </html>
