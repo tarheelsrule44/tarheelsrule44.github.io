@@ -84,6 +84,14 @@ function getOriginalBet(){
 function onSpin(){
 	cash = parseInt(document.getElementById("cash").value);
 	startingBet = parseInt(document.getElementById("bet").value);
+	if(startingBet > 2000){
+		alert("You're over the maximum bet of $2,000!");
+		return null;
+		}
+	if(startingBet > cash){
+		alert("You don't have enough cash to cover this bet");
+		return null;
+	}
 	spin(cash, startingBet);
 	document.getElementById("cash").value = cash;
 	document.getElementById("bet").value = startingBet;
@@ -93,11 +101,11 @@ function spinOneHundred(){
 		cash = parseInt(document.getElementById("cash").value);
 		startingBet = parseInt(document.getElementById("bet").value);
 		if(startingBet > 2000){
-			alert("You're over the maximum bet!");
+			alert("You're over the maximum bet of $2,000!");
 			break;
 		}
 		if(startingBet > cash){
-			alert("You've ran out of money!");
+			alert("You don't have enough cash to cover this bet");
 			break;
 		}
 		spin(cash, startingBet);
