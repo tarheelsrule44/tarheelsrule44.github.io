@@ -2,10 +2,30 @@
 <html>
 <head>
 <title>Roulette Calculator</title>
+</head> 
+<body onload="getOriginalBet()">
+
+<h1>Cash</h1>
+<form>
+Cash:
+<input type="number" name="startingCash" id="cash" value="2000"><br>
+Bet:
+<input type="number" name="minBet" id="bet" value="15" onChange="getOriginalBet()"><br>
+<input type="button" value="Spin!" onclick="onSpin()">
+<input type="button" value="Spin 100x" onclick="spinOneHundred()"
+</form>
+
+<h1>Spin Info</h1>
+Number:
+<input type="number" id="number" readonly style="border-width:0px;border:none;"><br>
+Color:
+<input type="text" id="color" readonly style="border-width:0px;border:none;">
+
 <script>
 
 var cash = 0;
 var startingBet = 0;
+var originalBet = 0;
 
 var black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
 var red = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
@@ -18,7 +38,7 @@ function spin(money, bet){
 		document.getElementById("color").value = "black";
 		console.log('Spin = '+number+' black');
 		money+=bet;
-		startingBet = 15;
+		startingBet = originalBet;
 		console.log('Cash = '+money);
 		console.log('reset bet');
 		cash = money;
@@ -46,6 +66,9 @@ function spin(money, bet){
 		console.log('New bet = '+startingBet);
 		cash = money;
 	}
+}
+function getOriginalBet(){
+	originalBet = parseInt(document.getElementById("bet").value);
 }
 
 function onSpin(){
@@ -75,23 +98,6 @@ function spinOneHundred(){
 
 
 </script>
-
-</head> 
-<body>
-<h1>Cash</h1>
-<form>
-Cash:
-<input type="number" name="startingCash" id="cash" value="2000"><br>
-Bet:
-<input type="number" name="minBet" id="bet" value="15"><br>
-<input type="button" value="Spin!" onclick="onSpin()">
-<input type="button" value="Spin 100x" onclick="spinOneHundred()"
-</form>
-<h1>Spin Info</h1>
-Number:
-<input type="number" id="number" readonly style="border-width:0px;border:none;"><br>
-Color:
-<input type="text" id="color" readonly style="border-width:0px;border:none;">
 
 
 </body>
