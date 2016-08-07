@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Roulette Calculator</title>
+<script>
+
+var cash = 0;
+var startingBet = 0;
+
+var black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
+var red = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+var green = [0, 37];
+
+function spin(money, bet){
+	number = Math.floor((Math.random() * 38));
+	if(black.includes(number)){
+		document.getElementById("number").value = number;
+		document.getElementById("color").value = "black";
+		console.log('Spin = '+number+' black');
+		money+=bet;
+		startingBet = 15;
+		console.log('Cash = '+money);
+		console.log('reset bet');
+		cash = money;
+	}
+	if(red.includes(number)){
+		document.getElementById("number").value = number;
+		document.getElementById("color").value = "red";
+		console.log('Spin = '+number+' red');
+		money-=bet;
+		startingBet = bet *2;
+		console.log('Cash = '+money);
+		console.log('New bet = '+startingBet);
+		cash = money;;
+	}
+	if(green.includes(number)){
+		if(number==37){
+			document.getElementById("number").value = "00";
+		}
+		else {document.getElementById("number").value = number;}
+		document.getElementById("color").value = "green";
+		console.log('Spin = '+number+' green');
+		money-=(bet/2);
+		startingBet = bet *2;
+		console.log('Cash = '+money);
+		console.log('New bet = '+startingBet);
+		cash = money;
+	}
+}
+
+function onSpin(){
+	cash = parseInt(document.getElementById("cash").value);
+	startingBet = parseInt(document.getElementById("bet").value);
+	spin(cash, startingBet);
+	document.getElementById("cash").value = cash;
+	document.getElementById("bet").value = startingBet;
+}
+function spinOneHundred(){
+	for(i=0;i<101;i++){
+		cash = parseInt(document.getElementById("cash").value);
+		startingBet = parseInt(document.getElementById("bet").value);
+		if(startingBet > 2000){
+			alert("You're over the maximum bet!");
+			break;
+		}
+		if(startingBet > cash){
+			alert("You've ran out of money!");
+			break;
+		}
+		spin(cash, startingBet);
+		document.getElementById("cash").value = cash;
+		document.getElementById("bet").value = startingBet;
+	}
+}
+
+
+</script>
+
+</head> 
+<body>
+<h1>Cash</h1>
+<form>
+Cash:
+<input type="number" name="startingCash" id="cash" value="2000"><br>
+Bet:
+<input type="number" name="minBet" id="bet" value="15"><br>
+<input type="button" value="Spin!" onclick="onSpin()">
+<input type="button" value="Spin 100x" onclick="spinOneHundred()"
+</form>
+<h1>Spin Info</h1>
+Number:
+<input type="number" id="number" readonly style="border-width:0px;border:none;"><br>
+Color:
+<input type="text" id="color" readonly style="border-width:0px;border:none;">
+
+
+</body>
+</html>
