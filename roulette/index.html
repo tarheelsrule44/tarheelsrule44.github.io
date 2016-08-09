@@ -3,37 +3,14 @@
 	<head>
 		<title>Roulette Calculator</title>
 		<link href="css/bootstrap.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head> 
 	<body onload="getOriginalBet()">
 		<div class="container">
-			<div class ="row">
-				<div class="col-md-6">
-					<form class="form-horizontal">
-						<div class="form-group">
-							<h1>Martingale Strategy</h1>
-							<p>In this strategy, a player bets a static amount ($15 by default here) and doubles the bet after a loss.  The strategy is to win the original bet back even if there are several losses in a row.</p>
-							<p>Edit the Cash and Bet amount and play around with this strategy</p>
-
-							<label for="cash" class="col-sm-2 control-label">Cash:</label>
-							<div class="col-sm-10">
-								<input type="number" name="startingCash" id="cash" class="form-control" value="2000">
-							</div>
-							<label for="bet" class="col-sm-2 control-label">Bet:</label>
-							<div class="col-sm-10">
-								<input type="number" name="minBet" id="bet" value="15" class="form-control" onChange="getOriginalBet()">
-							</div>
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="button" class="btn btn-success" onclick="onSpin()">Spin</button>
-								<button type="button" class="btn btn-success" onclick="spinOneHundred()">Spin 100x</button>
-							</div>
-
-						</div>
-					</div>
-				</form>
-				
-				<div class="col-md-6">
-
+			<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
 					<h1>Spin Info</h1>
 					<p>The Number and Color of each spin will appear here.</p>
 					<b>Number:</b>
@@ -44,29 +21,47 @@
 			</div>
 			<div class ="row">
 				<div class="col-md-6">
-					<form class="form-horizontal">
-						<div class="form-group">
+					<div class="form-group">
+						<h1>Martingale Strategy</h1>
+						<p>In this strategy, a player bets a static amount ($15 by default here) and doubles the bet after a loss.  The strategy is to win the original bet back even if there are several losses in a row.</p>
+						<p>Edit the Cash and Bet amount and play around with this strategy</p>
 
-							<h1>Regular Roulette</h1>
-							<p>Play American rules Roulette. Change the Bet and Number to any that you like.</p>
-							<label for="rCash" class="col-sm-2 control-label">Cash:</label>
-							<div class="col-sm-10">
-								<input type="number" name="startingCash" id="rCash" class="form-control" value="2000">
-							</div>
-							<label for="bet" class="col-sm-2 control-label">Bet:</label>
-							<div class="col-sm-10">
-								<input type="number" name="minBet" id="rBet" value="100" class="form-control">
-							</div>
-							<label for="nums" class="col-sm-2 control-label">Number:</label>
-							<div class="col-sm-10">
-								<input type="number" name="minBet" id="nums" value="13" class="form-control">
-							</div>
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="button" class="btn btn-success" onclick="regularSpin()">Spin</button>
-							</div>
+						<label for="cash" class="col-sm-2 control-label">Cash:</label>
+						<div class="col-sm-10">
+							<input type="number" name="startingCash" id="cash" class="form-control" value="2000">
 						</div>
-					</form>
+						<label for="bet" class="col-sm-2 control-label">Bet:</label>
+						<div class="col-sm-10">
+							<input type="number" name="minBet" id="bet" value="15" class="form-control" onChange="getOriginalBet()">
+						</div>
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="button" class="btn btn-success" onclick="onSpin()">Spin</button>
+							<button type="button" class="btn btn-success" onclick="spinOneHundred()">Spin 100x</button>
+						</div>
+					</div>
 				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+
+						<h1>Regular Roulette</h1>
+						<p>Play American rules Roulette. Change the Bet and Number to any that you like.</p>
+						<label for="rCash" class="col-sm-2 control-label">Cash:</label>
+						<div class="col-sm-10">
+							<input type="number" name="startingCash" id="rCash" class="form-control" value="2000">
+						</div>
+						<label for="bet" class="col-sm-2 control-label">Bet:</label>
+						<div class="col-sm-10">
+							<input type="number" name="minBet" id="rBet" value="100" class="form-control">
+						</div>
+						<label for="nums" class="col-sm-2 control-label">Number:</label>
+						<div class="col-sm-10">
+							<input type="number" name="minBet" id="nums" value="13" class="form-control">
+						</div>
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="button" class="btn btn-success" onclick="regularSpin()">Spin</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 
@@ -92,20 +87,7 @@
 				} else {
 					rCash-=rBet;
 					var spin = Math.floor((Math.random() * 38));
-					if(black.includes(spin)){
-						document.getElementById("number").value = spin;
-						document.getElementById("color").value = "black";
-					}
-					if(red.includes(spin)){
-						document.getElementById("number").value = spin;
-						document.getElementById("color").value = "red";
-					}
-					if(green.includes(spin)){
-						if(spin==37){
-							document.getElementById("number").value = "00";
-						} else {document.getElementById("number").value = spin;}
-						document.getElementById("color").value = "green";
-					}
+					setNumber(spin);
 					if(nums == spin){
 						document.getElementById("rCash").className = "form-control text-success";
 						resetText("rCash");
@@ -116,6 +98,23 @@
 						resetText("rCash");
 						document.getElementById("rCash").value = rCash;
 					}
+				}
+			}
+
+			function setNumber(num){
+				if(black.includes(num)){
+					document.getElementById("number").value = num;
+					document.getElementById("color").value = "black";
+				}
+				if(red.includes(num)){
+					document.getElementById("number").value = num;
+					document.getElementById("color").value = "red";
+				}
+				if(green.includes(num)){
+					if(num==37){
+						document.getElementById("number").value = "00";
+					} else {document.getElementById("number").value = num;}
+					document.getElementById("color").value = "green";
 				}
 			}
 
@@ -130,40 +129,25 @@
 				if(black.includes(number)){
 					document.getElementById("cash").className = "form-control text-success";
 					resetText("cash");
-					document.getElementById("number").value = number;
-					document.getElementById("color").value = "black";
-					console.log('Spin = '+number+' black');
+					setNumber(number);
 					money+=bet;
 					startingBet = originalBet;
-					console.log('Cash = '+money);
-					console.log('reset bet');
 					cash = money;
 				}
 				if(red.includes(number)){
 					document.getElementById("cash").className = "form-control text-danger";
 					resetText("cash");
-					document.getElementById("number").value = number;
-					document.getElementById("color").value = "red";
-					console.log('Spin = '+number+' red');
+					setNumber(number);
 					money-=bet;
 					startingBet = bet *2;
-					console.log('Cash = '+money);
-					console.log('New bet = '+startingBet);
 					cash = money;;
 				}
 				if(green.includes(number)){
-					if(number==37){
-						document.getElementById("number").value = "00";
-					}
-					else {document.getElementById("number").value = number;}
+					setNumber(number);
 					document.getElementById("cash").className = "form-control text-danger";
 					resetText("cash");
-					document.getElementById("color").value = "green";
-					console.log('Spin = '+number+' green');
 					money-=(bet/2);
 					startingBet = bet *2;
-					console.log('Cash = '+money);
-					console.log('New bet = '+startingBet);
 					cash = money;
 				}
 			}
