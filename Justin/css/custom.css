@@ -1,7 +1,6 @@
 html { 
 	padding-top: 50px; 
-	background: url(../images/background.jpg) no-repeat center center;
-    color: #fff;
+	background: url(../images/background.jpg) no-repeat center center fixed;
     height: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
