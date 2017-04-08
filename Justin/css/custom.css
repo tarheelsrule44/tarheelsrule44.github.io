@@ -1,9 +1,10 @@
-.bg-overlay {
-    background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1)), url(../images/background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+html { 
+	padding-top: 50px; 
+	background: url(../images/background.jpg) no-repeat center center;
     color: #fff;
-    height: 1000px;
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-body { padding-top: 50px; }
