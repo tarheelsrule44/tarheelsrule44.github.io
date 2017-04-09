@@ -5,7 +5,7 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	background-attachment: fixed;
+	@media only screen and (min-width : 992px)  {background-attachment: fixed;}
 }
 p {
 	font-size: 16px;
