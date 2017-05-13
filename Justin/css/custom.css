@@ -12,3 +12,6 @@ html {
 p {
 	font-size: 16px;
 }
+.topDiv {
+	background: url(../images/courtroom.jpg) no-repeat center center fixed;
+}
