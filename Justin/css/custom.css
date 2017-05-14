@@ -1,16 +1,22 @@
 html { 
 	padding-top: 50px; 
-	background: url(../images/blur.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	@media (max-width: @iphone-screen) {
-        background-attachment: scroll;
-    }
+	
 }
 p {
 	font-size: 16px;
+	font-family: Cambria, Georgia, serif;
+}
+h1 {
+	font-family: Cambria, Georgia, serif;
+}
+h2 {
+	font-family: Cambria, Georgia, serif;
+}
+h3 {
+	font-family: Cambria, Georgia, serif;
+}
+a {
+	font-family: Cambria, Georgia, serif;
 }
 .topDiv {
 	background: url(../images/courtroom.jpg) no-repeat center center fixed;
@@ -18,6 +24,6 @@ p {
 .center {
 	text-align: center;
 }
-li {
-	text-align: center;
+.frontPage {
+	font-size: 24px;
 }
