@@ -1,6 +1,6 @@
 #Project 5 - Neighborhood Map
 
-link: http://tarheelsrule44.github.io/neighborhood-map/index.html
+link: http://tytanic.github.io/neighborhood-map/index.html
 
 This is a Single Page App that starts with a prepopulated list of resturants, bars, cafe's, etc. within Chapel Hill, NC.  
 
