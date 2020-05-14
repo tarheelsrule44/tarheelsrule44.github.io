@@ -1,6 +1,6 @@
 ## Website Performance Optimization portfolio project
 
-To view the project live, head over to http://tarheelsrule44.github.io/project-4/index.html
+To view the project live, head over to http://tytanic.github.io/project-4/index.html
 
 The link includes minfied versions of HTML, CSS, and JS files. 
 
